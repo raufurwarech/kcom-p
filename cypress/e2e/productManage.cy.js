@@ -11,37 +11,39 @@ describe('create Products', () => {
         cy.get("#login-email").should('be.visible').type('test@ecom.com')
         cy.get("#login-password").should('be.visible').type('password')
         cy.get("button[type=submit]").click()
-        // cy.title().should('include', 'Home')
+        cy.wait(5000)
+        cy.title().should('include', 'Home')
         cy.wait(3000)
 
         // create brands
         cy.contains("Products").click()
         cy.contains("Product List").click()
-        cy.wait(3000)
+        cy.wait(5000)
         cy.contains("Add Product").click()
 
 
-        
+
         cy.get("#sku-number").should('be.visible').type('123344')
         cy.get("#product-name").should('be.visible').type('Coffee')
         cy.get("#product-barcode").should('be.visible').type('12345asdf')
 
-        cy.get("#category-id").click().type("TEA").each(function ($ele, index, list){
-
-            cy.select()
-        })
-
-        // category(category) {
-
-        //     cy.get(this.category_dropdown).type(category)
-        //     cy.get('vs24__listbox div').each(($el, index, $list) => {
-        //         if ($el.text() === 'WATER') {
-        //             cy.wrap($el).click()
-        //         }
-                
-        //     })   
+        cy.get("#category-id").click().type("FRO")
+        // cy.get('#vs2__option-0').click()
     
-        // }
+        const optionCategory = 'FROZEN'
+        cy.get('li.vs__dropdown-option').each(($el, index, $list) => {
+            let elementFound = false
+            if ($el.text().trim() === optionCategory) {
+                elementFound = true
+                cy.wrap($el).click()
+            }
+            if (elementFound) {
+                cy.log(`Found element for option: ${optionCategory}`);
+            } else {
+                cy.log('Element not found')
+            }
+
+        })
 
 
         // cy.get("#brand-name").should("be.visible").type("ACME TEA")

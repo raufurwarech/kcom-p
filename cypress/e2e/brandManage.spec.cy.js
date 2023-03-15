@@ -11,7 +11,7 @@ describe('create brand', () => {
         cy.get("#login-email").should('be.visible').type('test@ecom.com')
         cy.get("#login-password").should('be.visible').type('password')
         cy.get("button[type=submit]").click()
-        // cy.title().should('eq', 'Home')
+        cy.title().should('eq', 'Home')
         cy.wait(3000)
 
         // create brands

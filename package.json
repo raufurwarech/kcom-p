@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "cypress install",
+    
     "test": "cypress open"
   },
   "keywords": [],
