@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "cypress install",
-    
     "test": "cypress open"
   },
   "keywords": [],
@@ -15,6 +14,7 @@
     "cypress": "^12.8.0"
   },
   "devDependencies": {
-    "@cypress/xpath": "^2.0.3"
+    "@cypress/xpath": "^2.0.3",
+    "cypress-mochawesome-reporter": "^3.3.0"
   }
 }

@@ -1,4 +1,4 @@
-describe('create brand', () => {
+describe('Create Supplier', () => {
 
 
     it('Brand Management', () => {

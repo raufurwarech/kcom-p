@@ -1,4 +1,4 @@
-describe('create Products', () => {
+describe('Create Products', () => {
 
 
     it('Product Management', () => {
@@ -22,20 +22,21 @@ describe('create Products', () => {
         cy.contains("Add Product").click()
 
 
-
-        cy.get("#sku-number").should('be.visible').type('123344')
+        // Input product details
+        cy.get("#sku-number").should('be.visible').type('1233444343')
+        cy.wait(2000)
         cy.get("#product-name").should('be.visible').type('Coffee')
+        cy.wait(2000)
         cy.get("#product-barcode").should('be.visible').type('12345asdf')
 
-        cy.get("#category-id").click().type("FRO")
-        // cy.get('#vs2__option-0').click()
-    
+        // dropdown element 
+        cy.get("#category-id").click().type("FRO")   
         const optionCategory = 'FROZEN'
-        cy.get('li.vs__dropdown-option').each(($el, index, $list) => {
+        cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
             let elementFound = false
-            if ($el.text().trim() === optionCategory) {
+            if ($ele.text().trim() === optionCategory) {
                 elementFound = true
-                cy.wrap($el).click()
+                cy.wrap($ele).click()
             }
             if (elementFound) {
                 cy.log(`Found element for option: ${optionCategory}`);
@@ -45,9 +46,73 @@ describe('create Products', () => {
 
         })
 
+        cy.get("#brand-id").click().type("COFFEE") 
 
-        // cy.get("#brand-name").should("be.visible").type("ACME TEA")
-        //cy.get("div.h-100:nth-child(3) div.vertical-layout.h-100.vertical-menu-modern.menu-expanded.navbar-floating.footer-static div.app-content.content div.content-wrapper div.content-body div.b-sidebar-outer:nth-child(1) div.b-sidebar.shadow.b-sidebar-right.bg-white.text-dark.sidebar-lg:nth-child(2) div.b-sidebar-body span:nth-child(2) form.p-2 div.d-flex.mt-2:nth-child(3) button.btn.mr-2.btn-primary:nth-child(1) > div:nth-child(1)").click()
+        const optionBrand = 'COFFEE'
+        cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
+            let elementFound = false
+            if ($ele.text().trim() === optionBrand) {
+                elementFound = true
+                cy.wrap($ele).click()
+            }
+            if (elementFound) {
+                cy.log(`Found element for option: ${optionBrand}`);
+            } else {
+                cy.log('Element not found')
+            }
+
+        })
+
+        cy.get("#unit-id").click().type("1 KG") 
+        const optionUnit = '1 KG'
+        cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
+            let elementFound = false
+            if ($ele.text().trim() === optionUnit) {
+                elementFound = true
+                cy.wrap($ele).click()
+            }
+            if (elementFound) {
+                cy.log(`Found element for option: ${optionUnit}`);
+            } else {
+                cy.log('Element not found')
+            }
+
+        })
+
+        cy.get("#supplier-ids").click().type("BD COM") 
+        const optionSuppliers = 'BD COM'
+        cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
+            let elementFound = false
+            if ($ele.text().trim() === optionSuppliers) {
+                elementFound = true
+                cy.wrap($ele).click()
+            }
+            if (elementFound) {
+                cy.log(`Found element for option: ${optionBrand}`);
+            } else {
+                cy.log('Element not found')
+            }
+
+        })
+        cy.get(3000)
+
+        cy.get("#country-ids").click().type("Albania") 
+        const optionOrigin = 'Albania'
+        cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
+            let elementFound = false
+            if ($ele.text().trim() === optionOrigin) {
+                elementFound = true
+                cy.wrap($ele).click()
+            }
+            if (elementFound) {
+                cy.log(`Found element for option: ${optionBrand}`);
+            } else {
+                cy.log('Element not found')
+            }
+
+        })
+
+        cy.xpath("//div[contains(text(),'Add')]").click()
 
     });
 
