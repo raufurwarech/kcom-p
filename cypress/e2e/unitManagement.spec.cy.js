@@ -1,4 +1,4 @@
-import { UnitPage } from "./page/unit_page";
+import { UnitPage } from "./pages/unit_page";
 
 describe('Create Units', () => {
 
@@ -23,6 +23,7 @@ describe('Create Units', () => {
         unitpage.clickAddUnit()
         cy.wait(5000)
 
+        // input unit data
         unitpage.inputUnitName("Demo 101")
         unitpage.submitUnitname()
         

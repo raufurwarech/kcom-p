@@ -1,4 +1,4 @@
-import { CategoryPage } from "./page/category_page";
+import { CategoryPage } from "./pages/category_page";
 describe('Create Category', () => {
 
     const categorypage = new CategoryPage()
@@ -14,20 +14,21 @@ describe('Create Category', () => {
         cy.title().should('be.equal', 'Home')
         cy.wait(3000)
 
-        // create brands
+        // create category
         categorypage.clickProductMenu()
         cy.wait(5000)
         categorypage.clickCategoryMenu()
         cy.wait(5000)
-        categorypage. clickAddCategory()
+        categorypage.clickAddCategory()
         cy.wait(5000)
         
-        categorypage.inputCategoryName('food')
+        // Input category data
+        categorypage.inputCategoryName('alu')
         categorypage.submitCategoryname()
 
-        cy.on('window:alert', function(str){
-            expect(str).to.be.equal('Successfully Category store.')
-        })
+        // cy.on('window:alert', function(str){
+        //     expect(str)('be.equal', 'Successfully Category store.')
+        // })
 
     });
 

@@ -1,4 +1,4 @@
-import { BrandPage } from "./page/band_page";
+import { BrandPage } from "./pages/product/band_page";
 
 describe('Create Brand', () => {
 
@@ -23,7 +23,8 @@ describe('Create Brand', () => {
         brandpage.clickAddBrand()
         cy.wait(5000)
 
-        brandpage.inputBrnadName("Demo 101")
+        // input brand data
+        brandpage.inputBrnadName("al-hera")
         brandpage.submitBrandname()
 
     });

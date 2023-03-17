@@ -1,5 +1,8 @@
+import { Productpage } from "./pages/product_page";
+
 describe('Create Products', () => {
 
+    const productpage = new Productpage(``)
 
     it('Product Management', () => {
 
@@ -7,27 +10,30 @@ describe('Create Products', () => {
         cy.visit("https://kcom.kuiperz.io/login")
         cy.url().should('include', 'kuiperz.io')
 
-        // Login app
-        cy.get("#login-email").should('be.visible').type('test@ecom.com')
-        cy.get("#login-password").should('be.visible').type('password')
-        cy.get("button[type=submit]").click()
-        cy.wait(5000)
-        cy.title().should('include', 'Home')
-        cy.wait(3000)
+       // Login application
+       cy.viewport('macbook-16')
+       cy.visit("https://kcom.kuiperz.io/login")
+       productpage.enterEmail("test@ecom.com")
+       productpage.enterPassword("password")
+       productpage.clickLogin()
+       cy.title().should('be.equal', 'Home')
+       cy.wait(3000)
 
-        // create brands
-        cy.contains("Products").click()
-        cy.contains("Product List").click()
-        cy.wait(5000)
-        cy.contains("Add Product").click()
+      // create Product
+      productpage.clickProductMenu()
+      cy.wait(5000)
+      productpage.clickProductlistMenu()
+      cy.wait(5000)
+      productpage.clickAddProduct()
+      cy.wait(5000)
 
 
         // Input product details
-        cy.get("#sku-number").should('be.visible').type('1233444343')
+        productpage.inputSkuNumber("3214")
         cy.wait(2000)
-        cy.get("#product-name").should('be.visible').type('Coffee')
+        productpage.inputProductname('alu potol')
         cy.wait(2000)
-        cy.get("#product-barcode").should('be.visible').type('12345asdf')
+        productpage.inputbarcode('12345asdf')
 
         // dropdown element 
         cy.get("#category-id").click().type("FRO")   
