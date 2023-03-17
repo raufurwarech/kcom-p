@@ -24,7 +24,7 @@ describe('Create Units', () => {
         cy.wait(5000)
 
         // input unit data
-        unitpage.inputUnitName("Demo 101")
+        unitpage.inputUnitName("10p")
         unitpage.submitUnitname()
         
         
