@@ -26,6 +26,7 @@ export class Productpage {
 
     origin_dropdown = "#country-ids"
     origin_dropdown_list = "li.vs__dropdown-option"
+    
 
 
 
@@ -74,6 +75,7 @@ export class Productpage {
 
     }
 
+    
 
    
 }

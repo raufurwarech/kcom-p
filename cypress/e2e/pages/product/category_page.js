@@ -9,6 +9,7 @@ export class CategoryPage {
     click_AddCategory_button = "//body[1]/div[2]/div[1]/div[3]/div[3]/div[2]/div[1]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/button[1]"
     input_Category_Name = "#category-name"
     submit_Category_name = "//div[contains(text(),'Add')]"
+
     // Login application
     enterEmail(userid) {
         cy.get(this.enterEmail_textbox).should('be.visible').type(userid)

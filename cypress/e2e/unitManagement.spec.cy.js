@@ -1,4 +1,4 @@
-import { UnitPage } from "./pages/unit_page";
+import { UnitPage } from "./pages/product/unit_page";
 
 describe('Create Units', () => {
 
@@ -21,7 +21,7 @@ describe('Create Units', () => {
         unitpage.clickUnitMenu()
         cy.wait(5000)
         unitpage.clickAddUnit()
-        cy.wait(5000)
+        cy.wait(3000)
 
         // input unit data
         unitpage.inputUnitName("10p")

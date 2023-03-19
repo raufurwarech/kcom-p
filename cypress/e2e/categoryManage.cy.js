@@ -1,4 +1,5 @@
-import { CategoryPage } from "./pages/category_page";
+import { CategoryPage } from "./pages/product/category_page";
+
 describe('Create Category', () => {
 
     const categorypage = new CategoryPage()
@@ -20,10 +21,10 @@ describe('Create Category', () => {
         categorypage.clickCategoryMenu()
         cy.wait(5000)
         categorypage.clickAddCategory()
-        cy.wait(5000)
+        cy.wait(3000)
         
         // Input category data
-        categorypage.inputCategoryName('alu')
+        categorypage.inputCategoryName('honey cream')
         categorypage.submitCategoryname()
 
         // cy.on('window:alert', function(str){

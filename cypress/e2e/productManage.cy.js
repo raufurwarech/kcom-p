@@ -1,8 +1,8 @@
-import { Productpage } from "./pages/product_page";
+import { Productpage } from "./pages/product/product_page";
 
 describe('Create Products', () => {
 
-    const productpage = new Productpage(``)
+    const productpage = new Productpage()
 
     it('Product Management', () => {
 
@@ -31,7 +31,7 @@ describe('Create Products', () => {
         // Input product details
         productpage.inputSkuNumber("3214")
         cy.wait(2000)
-        productpage.inputProductname('alu potol')
+        productpage.inputProductname('Cold Coffee')
         cy.wait(2000)
         productpage.inputbarcode('12345asdf')
 
