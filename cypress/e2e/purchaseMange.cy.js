@@ -1,79 +1,55 @@
-// const { it } = require("mocha");
+import { PurchageOrderPage } from "./pages/purchase/purchase_orderpage";
 
-// describe('Create suppliers', () => {   
+describe('Create Products', () => {
 
-//     it('Brand Management', () => {     
+    const purchaseorder = new PurchageOrderPage()
 
-//         cy.viewport('macbook-16')
-//         cy.visit("https://kcom.kuiperz.io/login")
-//         cy.url().should('include', 'kuiperz.io')
+    it('Product Management', () => {
 
-//         // Login app
-//         cy.get("#login-email").should('be.visible').type('test@ecom.com')
-//         cy.get("#login-password").should('be.visible').type('password')
-//         cy.get("button[type=submit]").click()
-//         cy.title().should('eq', 'Home')
-//         cy.wait(3000)
+        cy.viewport('macbook-16')
+        cy.visit("https://kcom.kuiperz.io/login")
+        cy.url().should('include', 'kuiperz.io')
 
-//         // create brands
-//         cy.contains("Contacts").click()
-//         cy.contains("Suppliers").click()
-//         cy.wait(3000)
-//         cy.contains("Add Supplier" ).click()
+       // Login application
+       cy.viewport('macbook-16')
+       cy.visit("https://kcom.kuiperz.io/login")
+       purchaseorder.enterEmail("test@ecom.com")
+       purchaseorder.enterPassword("password")
+       purchaseorder.clickLogin()
+       cy.title().should('be.equal', 'Home')
+       cy.wait(3000)
+
+      // create Product
+      purchaseorder.clickPurchaseMenu()
+      cy.wait(5000)
+      purchaseorder.clickPurchaselistMenu()
+      cy.wait(5000)
+      purchaseorder.clickAddPurchase()
+      cy.wait(5000)
+
+
+        // dropdown element 
+        cy.get("#supplier").click().type("Bens")   
+        const optionCategory = "BEN & JERRY'S."
+        cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
+            let elementFound = false
+            if ($ele.text().trim() === optionCategory) {
+                elementFound = true
+                cy.wrap($ele).click()
+            }
+            if (elementFound) {
+                cy.log(`Found element for option: ${optionCategory}`);
+            } else {
+                cy.log('Element not found')
+            }
+
+        })
+
         
-        
-//         cy.get('#name').type("Ibra Com")
-//         cy.get("#bin").should("be.visible").type("1234467")
-        
-//         // Address One elements
-//         cy.get("#address_line_company_1").should("be.visible").type('RD-101')
-//         cy.get("#suburb").should("be.visible").type('Parth')
-//         cy.get("#postcode").should("be.visible").type('Parth')
-//         cy.get("#country").should("be.visible").type('AUS')
-//         cy.get("#state").should("be.visible").type('Parth')
-        
-//         cy.contains('Next').click()
-//         cy.wait(5000)
+        cy.xpath("//div[contains(text(),'Add')]").click()
 
-//         // Director Details
-//         cy.get("#director-name").should("be.visible").type("christian")
-//         cy.get("#surname").should("be.visible").type("eriksen")
-//         cy.get("#email").should("be.visible").type("erikson@gmail.com")
-
-//         // Country code for phone number
-//         // cy.contains("Country code").click()
-//         // cy.get('div.vue-recycle-scroller__item-view').each(($ele, index, $list) => {
-//         //     let elementFound = false
-//         //     if ($ele.text() === Bahamas) {
-//         //         elementFound = true
-//         //         cy.wrap($ele).click()
-//         //     }
-//         //     if (elementFound) {
-//         //         cy.log(`Found element for option: ${optionBrand}`);
-//         //     } else {
-//         //         cy.log('Element not found')
-//         //     }
-
-//         // })
-        
-        
-//         // Dob Calendar
-//         cy.get("#dob").should("be.visible").click()
+    });
 
 
 
-
-//         // cy.get("#director-name").should("be.visible").type("Erikson")
-
-//         // cy.get("#director-name").should("be.visible").type("Erikson")
-
-//         // cy.get("#director-name").should("be.visible").type("Erikson")
-
-
-//         cy.get("#dob")
-
-//     });
-
-
-
-// });
+});
