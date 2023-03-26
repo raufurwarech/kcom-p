@@ -6,119 +6,88 @@ describe('Create Products', () => {
 
     it('Product Management', () => {
 
-        cy.viewport('macbook-16')
-        cy.visit("https://kcom.kuiperz.io/login")
-        cy.url().should('include', 'kuiperz.io')
+        cy.fixture('product.json').then((data) => {
 
-       // Login application
-       cy.viewport('macbook-16')
-       cy.visit("https://kcom.kuiperz.io/login")
-       productpage.enterEmail("test@ecom.com")
-       productpage.enterPassword("password")
-       productpage.clickLogin()
-       cy.title().should('be.equal', 'Home')
-       cy.wait(3000)
+            // Login application
+            cy.viewport('macbook-16')
+            cy.visit("https://kcom.kuiperz.io/login")
+            productpage.enterEmail(data.enterEmail)
+            productpage.enterPassword(data.enterPassword)
+            productpage.clickLogin()
+            cy.title().should('be.equal', 'Home')
+            cy.wait(3000)
 
-      // create Product
-      productpage.clickProductMenu()
-      cy.wait(5000)
-      productpage.clickProductlistMenu()
-      cy.wait(5000)
-      productpage.clickAddProduct()
-      cy.wait(5000)
+            // create Product
+            productpage.clickProductMenu()
+            cy.wait(5000)
+            productpage.clickProductlistMenu()
+            cy.wait(5000)
+            productpage.clickAddProduct()
+            cy.wait(5000)
 
 
-        // Input product details
-        productpage.inputSkuNumber("3214")
-        cy.wait(2000)
-        productpage.inputProductname('Cold Coffee')
-        cy.wait(2000)
-        productpage.inputbarcode('12345asdf')
+            // Input product details
+            productpage.inputSkuNumber(data.skuNumber)
+            cy.wait(2000)
+            productpage.inputProductname(data.productName)
+            cy.wait(2000)
+            productpage.inputbarcode(data.barCode)
 
-        // dropdown element 
-        cy.get("#category-id").click().type("FRO")   
-        const optionCategory = 'FROZEN'
-        cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
-            let elementFound = false
-            if ($ele.text().trim() === optionCategory) {
-                elementFound = true
-                cy.wrap($ele).click()
-            }
-            if (elementFound) {
-                cy.log(`Found element for option: ${optionCategory}`);
-            } else {
-                cy.log('Element not found')
-            }
+            // dropdown element 
+            productpage.inputCategory(data.category)
+            const optionCategory = 'FROZEN'
+            cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
+                let elementFound = false
+                if ($ele.text().trim() === optionCategory) {
+                    elementFound = true
+                    cy.wrap($ele).click()
+                }
+            })
 
-        })
+            productpage.inputBrand(data.brand)
+            const optionBrand = 'COFFEE'
+            cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
+                let elementFound = false
+                if ($ele.text().trim() === optionBrand) {
+                    elementFound = true
+                    cy.wrap($ele).click()
+                }
+            })
 
-        cy.get("#brand-id").click().type("COFFEE") 
+            productpage.inputUnit(data.unit)
+            const optionUnit = '1 KG'
+            cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
+                let elementFound = false
+                if ($ele.text().trim() === optionUnit) {
+                    elementFound = true
+                    cy.wrap($ele).click()
+                }
+            })
 
-        const optionBrand = 'COFFEE'
-        cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
-            let elementFound = false
-            if ($ele.text().trim() === optionBrand) {
-                elementFound = true
-                cy.wrap($ele).click()
-            }
-            if (elementFound) {
-                cy.log(`Found element for option: ${optionBrand}`);
-            } else {
-                cy.log('Element not found')
-            }
+            productpage.inputSupplier(data.supplier)
+            const optionSuppliers = 'BD COM'
+            cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
+                let elementFound = false
+                if ($ele.text().trim() === optionSuppliers) {
+                    elementFound = true
+                    cy.wrap($ele).click()
+                }
+            })
+            cy.get(3000)
 
-        })
+            productpage.inputCountry(data.country)
+            const optionOrigin = 'Albania'
+            cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
+                let elementFound = false
+                if ($ele.text().trim() === optionOrigin) {
+                    elementFound = true
+                    cy.wrap($ele).click()
+                }
+            })
 
-        cy.get("#unit-id").click().type("1 KG") 
-        const optionUnit = '1 KG'
-        cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
-            let elementFound = false
-            if ($ele.text().trim() === optionUnit) {
-                elementFound = true
-                cy.wrap($ele).click()
-            }
-            if (elementFound) {
-                cy.log(`Found element for option: ${optionUnit}`);
-            } else {
-                cy.log('Element not found')
-            }
-
-        })
-
-        cy.get("#supplier-ids").click().type("BD COM") 
-        const optionSuppliers = 'BD COM'
-        cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
-            let elementFound = false
-            if ($ele.text().trim() === optionSuppliers) {
-                elementFound = true
-                cy.wrap($ele).click()
-            }
-            if (elementFound) {
-                cy.log(`Found element for option: ${optionBrand}`);
-            } else {
-                cy.log('Element not found')
-            }
+            cy.xpath("//div[contains(text(),'Add')]").click()
 
         })
-        cy.get(3000)
-
-        cy.get("#country-ids").click().type("Albania") 
-        const optionOrigin = 'Albania'
-        cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
-            let elementFound = false
-            if ($ele.text().trim() === optionOrigin) {
-                elementFound = true
-                cy.wrap($ele).click()
-            }
-            if (elementFound) {
-                cy.log(`Found element for option: ${optionBrand}`);
-            } else {
-                cy.log('Element not found')
-            }
-
-        })
-
-        cy.xpath("//div[contains(text(),'Add')]").click()
 
     });
 

@@ -4,7 +4,7 @@ export class BrandPage {
     enterPassword_textbox = "#login-password"
     clickLogin_button = "button[type=submit]"
 
-    click_Product_Menu = "Products"
+    click_Product_Menu = "[class='feather feather-layers']"
     click_Brand_menu = "Brands"
     click_AddBrand_button = "//body[1]/div[2]/div[1]/div[3]/div[3]/div[2]/div[1]/div[4]/div[1]/div[1]/div[2]/div[2]/div[1]/button[1]/span[1]"
     input_Brand_Name = "#brand-name"
