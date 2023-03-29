@@ -1,4 +1,5 @@
 {
+  "baseurl" : "https://kcom.kuiperz.io/login",
   "enterEmail": "test@ecom.com",
   "enterPassword": "password",
   "skuNumber": "423443423ds",
