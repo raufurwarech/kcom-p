@@ -1,0 +1,25 @@
+{
+    "baseurl" : "https://kcom.kuiperz.io/login",
+    "enterEmail": "test@ecom.com",
+    "enterPassword": "password",
+    
+    "customerType": "Prepaid",
+    "customerGroup": "Test",
+    "abnNumber": "50 110 219 460",
+    "companyName": "EXAMPLE PTY LTD",
+    "directorName": "james",
+    "directorSurname": "rio",
+    "emailId": "1234AS@gmail.com",
+    "country" : "Albania",
+    "phonrNo" : "011233445",
+    "password": "1233456",
+
+    "givenName":"dadas",
+    "role":"guard",
+  
+    "tradingName":"dadad",
+    "addressLineOne":"dhaka",
+    "addressLineTwo":"adad",
+    "emailTrading":"dfe@gmail.com"
+    
+}

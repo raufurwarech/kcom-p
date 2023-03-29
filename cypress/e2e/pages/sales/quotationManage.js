@@ -8,8 +8,8 @@ export class  QuotationManage{
     quotationList_Menu = "//a[@href='/sale/quotation-list']//*[name()='svg']"
     new_Quotation = "[href='/sale/quotation-handle']"
 
-    select_Till_Date = "#quotation-expiry-date"
-    select_Date = "[aria-label='March 27, 2023']"
+    select_Till_Date = "[placeholder='DD-MM-YYYY']"
+    select_Date = "[aria-label='March 28, 2023']"
     abn_Number = "#new-customer-abn"
     mobile_Country_Code = "[class='country-selector__label']"
     mobile_Number = "#mobile-240_phone_number"

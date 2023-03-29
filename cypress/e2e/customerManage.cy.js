@@ -27,25 +27,36 @@ describe('Customer Manage', () => {
 
 
             // custoemr create fields company info
-            customerpage.customerType(data.customerType)
-            const optionctype = 'Prepaid'
+            // customerpage.customerType()
+            // const optionctype = 'Prepaid'
+            // cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
+            //     let elementFound = false
+            //     if ($ele.text().trim() === optionctype) {
+            //         elementFound = true
+            //         cy.wrap($ele).click()
+            //     }
+            // })
+
+            cy.wait(2000)
+            
+            customerpage.customerGroup(data.customerGroup)
+            const optioncgroup = 'TEST'
             cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
                 let elementFound = false
-                if ($ele.text().trim() === optionctype) {
+                if ($ele.text().trim() === optioncgroup) {
                     elementFound = true
                     cy.wrap($ele).click()
                 }
             })
-
-            cy.wait(2000)
-            customerpage.customerGroup(data.customerGroup)
             cy.wait(2000)
             customerpage.abnNumber(data.abnNumber)
-            customerpage.CompanyName(data.companyName)
-            customerpage.companyEmail(data.companyEmail)
-            customerpage.companyMobile(data.companyMobile)
+            cy.wait(5000)
+            
+            cy.get('input[type="checkbox"]').check({force:true});
+            cy.wait(1000)
 
             customerpage.nextPage()
+            cy.wait(5000)
 
             // Add products input fields (director Info)
             customerpage.directorName(data.directorName)
@@ -53,29 +64,35 @@ describe('Customer Manage', () => {
             customerpage.directorEmail(data.emailId)
             customerpage.directorPassword(data.password)
 
-            customerpage.countryCodeCustomer()
-            customerpage.mobileNumberCustomer()
+            // customerpage.countryCodeCustomer()
+            // customerpage.mobileNumberCustomer()
             
-            customerpage.nextPageDirector()
+            //customerpage.nextPageDirector()
 
 
             // Contacts details for customer
-            customerpage.givenName(data.givenName)
+            //customerpage.givenName(data.givenName)
+            
+
+            cy.get('#phone-4060_country_selector').click()
+            cy.wait(1000)
+            cy.contains('Bangladesh (বাংলাদেশ)').click()
+
             customerpage.customerRole(data.role)
+            cy.wait(3000)
 
-            customerpage.mobileCodeContact()
-            customerpage.phoneNumber()
+            //customerpage.mobileNumberCustomer("01841785864")
 
-            customerpage.nextPageContacts()
+            //customerpage.nextPageContacts()
 
             // Trading details for create trading
-            customerpage.tradingName(data.tradingName)
-            customerpage.addressLineOne(data.addressLineOne)
-            customerpage.addressLineTwo(data.addressLineTwo)
-            customerpage.emailTrading(data.emailTrading)
-            customerpage.deliveryDate()
+            // customerpage.tradingName(data.tradingName)
+            // customerpage.addressLineOne(data.addressLineOne)
+            // customerpage.addressLineTwo(data.addressLineTwo)
+            // customerpage.emailTrading(data.emailTrading)
+            // customerpage.deliveryDate()
 
-            customerpage.submitTrading()
+            // customerpage.submitTrading()
 
 
 

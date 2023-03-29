@@ -12,10 +12,7 @@ export class CustomerManage {
     company_type = "//div[@id='vs30__combobox']//input[@type='search']"
     customer_group = "#cus-group"
     abn_number = "#abn"
-    company_name= "name"
-
-    company_email = "#__BVID__1249"   // checkbox 
-    company_mobile = "#__BVID__1250"
+    // company_name= "name"
 
     next_page_company = "//button[normalize-space()='Next']"
 
@@ -24,16 +21,16 @@ export class CustomerManage {
     sur_name = "#sur_name"
     email_id = "#email"
     password = "#password"
-    mobile_Country_Code_Customer = "[class='country-selector__label']"
-    mobile_Number_Custoemr = "#phone-2291_phone_number"
+    mobile_Country_Code_director = "[class='country-selector input-country-selector is-focused has-list-open']"
+    mobile_Number_director = "[placeholder='Phone number']"
 
     next_page = "div[class='wizard-footer-right'] button[type='button']"
 
     // contacts details
     given_name = "[placeholder='Given Name']"
     role = "#role"
-    mobile_code_contact_details = "#mobile-2332_country_selector"
-    phone_number = "#mobile-2332_phone_number"
+    mobile_Country_code_contact = "[#class='country-selector__label']"
+    mobile_Number_Contract = "[placeholder='Phone number']"
     next_page_contacts = "[//button[normalize-space()='Next']"
 
 
@@ -82,10 +79,10 @@ export class CustomerManage {
     }
 
     // Add customer input fields (Company Info)
-    customerType(custype){
-        cy.get(this.company_type).type(custype)
+    // customerType(custype){
+    //     cy.get(this.company_type).type(custype)
 
-    }
+    // }
 
     customerGroup(cugroup){
         cy.get(this.customer_group).type(cugroup)
@@ -96,20 +93,9 @@ export class CustomerManage {
 
     }
 
-    CompanyName(compname){
-        cy.get(this.company_name).type(compname)
-    }
-
-    companyEmail(){
-        cy.get(this.company_email).check()
-    }
-
-    companyMobile(unit){
-        cy.get(this.company_mobile).check(unit)
-    }
 
     nextPage (){
-        cy.get(this.next_page_company).click()
+        cy.xpath(this.next_page_company).click()
     }
 
 
@@ -119,7 +105,7 @@ export class CustomerManage {
     }
 
     directorSurname(dsurname){
-        cy.get(this.origin_dropdown).type(dsurname)
+        cy.get(this.sur_name).type(dsurname)
     } 
 
     directorEmail(email){
@@ -130,13 +116,15 @@ export class CustomerManage {
         cy.get(this.password).type(passw)
     }
 
-    countryCodeCustomer(){
-        cy.get(this.mobile_Country_Code_Customer).click()
-    }
+    // countryCodeCustomer(){
+    //     cy.get(this.mobile_Country_Code_director).click()
+    // }
 
-    mobileNumberCustomer(customermobile){
-        cy.get(this.mobile_Number_Custoemr).type(customermobile)
-    }
+    // mobileNumberCustomer(customermobile){
+    //     cy.get(this.mobile_Number_director).type(customermobile)
+    // }
+
+
 
     nextPageDirector(){
         cy.get(this.next_page_director).click()
@@ -152,12 +140,12 @@ export class CustomerManage {
         cy.get(this.role).type(role)
     }
 
-    mobileCodeContact(mobilecc){
-        cy.get(this.mobile_code_contact_details).type(mobilecc)
+    mobileCodeContact(){
+        cy.get(this.mobile_Country_code_contact).click()
     }
 
     phoneNumber(phone){
-        cy.get(this.phone_number).type(phone)
+        cy.get(this.mobile_Number_Contract).type(phone)
     }
 
     nextPageContacts(){
