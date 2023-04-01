@@ -1,10 +1,10 @@
 import { PurchageOrder } from "./pages/purchase/purchase_order";
 
-describe('Create Products', () => {
+describe('Create pruchase', () => {
 
     const purchaseorder = new PurchageOrder()
 
-    it('Product Management', () => {
+    it('Purchase Management', () => {
 
         cy.fixture('product').then((data) => {
 
@@ -22,7 +22,7 @@ describe('Create Products', () => {
             cy.title().should('be.equal', 'Home')
             cy.wait(3000)
 
-            // create Purchase
+            // Go to Purchase order page 
             purchaseorder.PurchaseMenu()
             cy.wait(5000)
             purchaseorder.PurchaseOrderMenu()
@@ -30,13 +30,8 @@ describe('Create Products', () => {
             purchaseorder.addPurchaseButton()
             cy.wait(3000)
 
-
-            //   cy.get('#supplier').click().type("BD COM")
-            //   cy.get('#expected-delivery-date').click()
-
-
-
-            cy.get('#supplier').type("denim")
+            // Creat purchase order 
+            purchaseorder.selectSupplier("denim")
             const optionsup = 'DENIM'
             cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
                 let elementFound = false
@@ -47,7 +42,13 @@ describe('Create Products', () => {
             })
 
 
-            cy.get("#category").type("clothing")
+            purchaseorder.expectedDeliveryDate()
+            cy.wait(2000)
+            purchaseorder.selectDate()
+            purchaseorder.supplierInvoiceNo("123454asdf")
+
+
+            purchaseorder.selectCategory("clothing")
             const optionScategoty = 'CLOTHING'
             cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
                 let elementFound = false
@@ -57,7 +58,7 @@ describe('Create Products', () => {
                 }
             })
 
-            cy.get("#product").type("DENIM JEANS")
+            purchaseorder.selectProduct("DENIM JEANS")
             const optionproduct = 'DENIM JEANS'
             cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
                 let elementFound = false
@@ -67,10 +68,7 @@ describe('Create Products', () => {
                 }
             })
 
-            // cy.get("#brand").should('not.enable')
-            // cy.get("#unit").should('not.enable')
-
-            cy.get("#country").type("United States")
+            purchaseorder.selectCountry("United States")
             const optioncountry = "United States"
             cy.get("li.vs__dropdown-option").each(($ele, index, $list) => {
                 let elementFound = false
@@ -81,12 +79,10 @@ describe('Create Products', () => {
                 }
             })
 
-            // cy.get("#stock-on-hand").should('not.enable')
-            cy.get("#quantity").type("10")
-            // cy.get("#last-po-cost-of-unit").should('not.enable')
-            cy.get("#purchase-rate").type("100")
+            purchaseorder.productQuantity("10")
+            purchaseorder.productPurchaseRate("100")
 
-            cy.get("#tax").type("8% (EIGHT)")
+            purchaseorder.productTax("8% (EIGHT)")
             const optiontax = "8% (EIGHT)"
             cy.get("li.vs__dropdown-option").each(($ele, index, $list) => {
                 let elementFound = false
@@ -97,21 +93,14 @@ describe('Create Products', () => {
                 }
             })
 
-            // cy.get("#total-gst").should('not.enable')
-            // cy.get("#gross-rate-include-gst").should('not.enable')
-            // cy.get("#total-price-include-gst").should('not.enable')
-
-
-
-
-            cy.xpath("//button[contains(text(),'Add')]").click()
-            cy.contains('Submit').click()
-            // cy.contains('Submit and Receive').clcik()
-
-
-
+            purchaseorder.addPurchaseOrder()
+            purchaseorder.purchaseOrderRecive()
             cy.wait(5000)
-            cy.get("[href='/purchase-order/list']").click()
+            
+            purchaseorder.purchaseNote("demo data inserted")
+            purchaseorder.purchaseRecive()
+
+
 
         })
 

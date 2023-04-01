@@ -1,8 +1,8 @@
 
-export function makeid(src, length) {
+export function createproduct(src, length) {
     let result = ''
     length = isNaN(length)?10:length
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     const charactersLength = characters.length;
     let counter = 0;
     while (counter < length) {
