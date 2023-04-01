@@ -22,15 +22,14 @@ export class CustomerManage {
     email_id = "#email"
     password = "#password"
     mobile_Country_Code_director = "[class='country-selector input-country-selector is-focused has-list-open']"
-    mobile_Number_director = "[placeholder='Phone number']"
-
-    next_page = "div[class='wizard-footer-right'] button[type='button']"
+    mobile_Number_director = "div#phone [placeholder='Phone number']"
+    next_page_director = "//button[contains(text(),'Next')]"
 
     // contacts details
     given_name = "[placeholder='Given Name']"
     role = "#role"
     mobile_Country_code_contact = "[#class='country-selector__label']"
-    mobile_Number_Contract = "[placeholder='Phone number']"
+    mobile_Number_Contract = "div#phone [placeholder='Phone number']"
     next_page_contacts = "[//button[normalize-space()='Next']"
 
 
@@ -120,14 +119,14 @@ export class CustomerManage {
     //     cy.get(this.mobile_Country_Code_director).click()
     // }
 
-    // mobileNumberCustomer(customermobile){
-    //     cy.get(this.mobile_Number_director).type(customermobile)
-    // }
+    mobileNumberCustomer(customermobile){
+        cy.get(this.mobile_Number_director).type(customermobile)
+    }
 
 
 
     nextPageDirector(){
-        cy.get(this.next_page_director).click()
+        cy.xpath(this.next_page_director).click()
     }
     
 
@@ -149,7 +148,7 @@ export class CustomerManage {
     }
 
     nextPageContacts(){
-        cy.get(this.next_page_contacts).click()
+        cy.xpath(this.next_page_contacts).click()
     }
     
 

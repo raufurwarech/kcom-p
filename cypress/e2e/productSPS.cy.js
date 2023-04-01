@@ -30,7 +30,7 @@ describe('Create Products', () => {
             productpage.clickProductlistMenu()
             cy.wait(5000)
             productpage.clickAddProduct()
-            cy.wait(5000)
+            cy.wait(3000)
 
 
             // Input product details
@@ -42,52 +42,43 @@ describe('Create Products', () => {
 
             // dropdown element 
             productpage.inputCategory(data.category)
-            const optionCategory = 'FROZEN'
             cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
-                let elementFound = false
-                if ($ele.text().trim() === optionCategory) {
-                    elementFound = true
+
+                if ($ele.text().trim() === data.category) {
                     cy.wrap($ele).click()
                 }
             })
 
             productpage.inputBrand(data.brand)
-            const optionBrand = 'COFFEE'
             cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
-                let elementFound = false
-                if ($ele.text().trim() === optionBrand) {
-                    elementFound = true
+
+                if ($ele.text().trim() === data.brand) {
                     cy.wrap($ele).click()
                 }
             })
 
             productpage.inputUnit(data.unit)
-            const optionUnit = '1 KG'
             cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
-                let elementFound = false
-                if ($ele.text().trim() === optionUnit) {
-                    elementFound = true
+
+                if ($ele.text().trim() === data.unit) {
                     cy.wrap($ele).click()
                 }
             })
 
             productpage.inputSupplier(data.supplier)
-            const optionSuppliers = 'BD COM'
+           
             cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
-                let elementFound = false
-                if ($ele.text().trim() === optionSuppliers) {
-                    elementFound = true
+
+                if ($ele.text().trim() === data.supplier) {
                     cy.wrap($ele).click()
                 }
             })
             cy.get(3000)
 
             productpage.inputCountry(data.country)
-            const optionOrigin = 'Albania'
             cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
-                let elementFound = false
-                if ($ele.text().trim() === optionOrigin) {
-                    elementFound = true
+
+                if ($ele.text().trim() === data.country) {
                     cy.wrap($ele).click()
                 }
             })
@@ -105,12 +96,10 @@ describe('Create Products', () => {
             cy.wait(3000)
 
             // Product Price setting
-            productpage.preoductTax()
-            const optionTax = '7% (7)'
+            productpage.preoductTax(data.producttax)
             cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
-                let elementFound = false
-                if ($ele.text().trim() === optionTax) {
-                    elementFound = true
+
+                if ($ele.text().trim() === data.producttax) {
                     cy.wrap($ele).click()
                 }
             })
@@ -153,12 +142,10 @@ describe('Create Products', () => {
             cy.wait(3000)
 
             // Creat purchase order 
-            purchaseorder.selectSupplier("denim")
-            const optionsup = 'DENIM'
+            purchaseorder.selectSupplier(data.supplier)
             cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
-                let elementFound = false
-                if ($ele.text().trim() === optionsup) {
-                    elementFound = true
+               
+                if ($ele.text().trim() === data.supplier) {
                     cy.wrap($ele).click()
                 }
             })
@@ -170,46 +157,38 @@ describe('Create Products', () => {
             purchaseorder.supplierInvoiceNo("123454asdf")
 
 
-            purchaseorder.selectCategory("clothing")
-            const optionScategoty = 'CLOTHING'
+            purchaseorder.selectCategory(data.category)
+            cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {   
+                if ($ele.text().trim() === data.category) {
+                    cy.wrap($ele).click()
+                }
+            })
+
+            purchaseorder.selectProduct(data.productName)
+            cy.wait(2000)
             cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
-                let elementFound = false
-                if ($ele.text().trim() === optionScategoty) {
-                    elementFound = true
+                if ($ele.text().trim() === data.productName) {
                     cy.wrap($ele).click()
                 }
             })
 
-            purchaseorder.selectProduct("DENIM JEANS")
-            const optionproduct = 'DENIM JEANS'
-            cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
-                let elementFound = false
-                if ($ele.text().trim() === optionproduct) {
-                    elementFound = true
-                    cy.wrap($ele).click()
-                }
-            })
+            purchaseorder.selectCountry(data.country)
+            
+            cy.get("li.vs__dropdown-option").each(($ele, index, $list) => { 
 
-            purchaseorder.selectCountry("United States")
-            const optioncountry = "United States"
-            cy.get("li.vs__dropdown-option").each(($ele, index, $list) => {
-                let elementFound = false
-                if ($ele.text().trim() === optioncountry) {
-                    elementFound = true
+                if ($ele.text().trim() === data.country) {    
                     cy.wrap($ele).click()
 
                 }
             })
 
-            purchaseorder.productQuantity("10")
+            purchaseorder.productQuantity(data.productQuantity)
             purchaseorder.productPurchaseRate("100")
 
-            purchaseorder.productTax("8% (EIGHT)")
-            const optiontax = "8% (EIGHT)"
+            purchaseorder.productTax(data.producttax)
             cy.get("li.vs__dropdown-option").each(($ele, index, $list) => {
-                let elementFound = false
-                if ($ele.text().trim() === optiontax) {
-                    elementFound = true
+
+                if ($ele.text().trim() === data.producttax) {
                     cy.wrap($ele).click()
 
                 }
@@ -222,7 +201,27 @@ describe('Create Products', () => {
             purchaseorder.purchaseNote("demo data inserted")
             purchaseorder.purchaseRecive()
 
+            // verify product stock
+            cy.wait(5000)
+            productpage.clickProductMenu()
+            cy.wait(2000)
+            productpage.clickProductlistMenu()
+            cy.wait(2000)
 
+            productpage.searchProduct(data.productName)
+            cy.wait(3000)
+
+            productpage.selectActions()
+            productpage.selectDetails()
+            cy.wait(3000)
+
+
+            productpage.nextProductPriceButton()
+            cy.wait(2000)
+            productpage.nextProductLevelbutton()
+            cy.wait(2000)
+
+            cy.xpath(`//td[normalize-space()='${data.productQuantity}']`).should('be.visible')
 
 
         })

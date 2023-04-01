@@ -3,12 +3,14 @@
   "enterEmail": "test@ecom.com",
   "enterPassword": "password",
   "skuNumber": "423443423ds",
-  "productName": "Coffee Exp",
+  "productName": "COFFEE EXP",
   "barCode": "4325434223",
-  "category": "fro",
-  "brand": "Coffee",
+  "category": "FROZEN",
+  "brand": "COFFEE",
   "unit":"1 KG",
   "supplier": "BD COM",
-  "country": "Albania"
+  "country": "Albania",
+  "producttax" : "8% (EIGHT)",
+  "productQuantity": "20"
 
 }

@@ -82,8 +82,8 @@ export class PurchageOrder {
    selectCategory(category){
     cy.get(this.select_category).type(category)
    }
-   productQuantity(prouantity){
-    cy.get(this.product_quantity).type(prouantity)
+   productQuantity(prquantity){
+    cy.get(this.product_quantity).type(prquantity)
    }
 
    productPurchaseRate(purchaserate){

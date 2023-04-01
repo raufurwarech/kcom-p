@@ -52,7 +52,8 @@ describe('Customer Manage', () => {
             customerpage.abnNumber(data.abnNumber)
             cy.wait(5000)
             
-            cy.get('input[type="checkbox"]').check({force:true});
+            cy.contains('Company Email').click();
+            cy.contains('Company Mobile').click();
             cy.wait(1000)
 
             customerpage.nextPage()
@@ -74,16 +75,17 @@ describe('Customer Manage', () => {
             //customerpage.givenName(data.givenName)
             
 
-            cy.get('#phone-4060_country_selector').click()
+            cy.get('div#phone label.country-selector__label').click()
             cy.wait(1000)
-            cy.contains('Bangladesh (বাংলাদেশ)').click()
+            cy.get('div#phone div.iti-flag-small.iti-flag.bd').click()
+            cy.wait(2000)
 
-            customerpage.customerRole(data.role)
-            cy.wait(3000)
+            customerpage.mobileNumberCustomer("01841785864")
+            cy.wait(2000)
 
-            //customerpage.mobileNumberCustomer("01841785864")
-
-            //customerpage.nextPageContacts()
+            customerpage.nextPageDirector()
+            cy.wait(5000)
+            // customerpage.customerRole(data.role)
 
             // Trading details for create trading
             // customerpage.tradingName(data.tradingName)
