@@ -5,7 +5,7 @@
     
     "customerType": "Prepaid",
     "customerGroup": "Test",
-    "abnNumber": "50 110 219 460",
+    "abnNumber": "88 098 072 158",
     "companyName": "EXAMPLE PTY LTD",
     "directorName": "james",
     "directorSurname": "rio",
@@ -20,6 +20,10 @@
     "tradingName":"dadad",
     "addressLineOne":"dhaka",
     "addressLineTwo":"adad",
+    "suburb": "genius",
+    "countryTrading" : "Bangladesh",
+    "stateTrading": "Dhaka",
+    "postcodeTrading": "1234",
     "emailTrading":"dfe@gmail.com"
     
 }

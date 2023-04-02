@@ -24,20 +24,6 @@ describe('Customer Manage', () => {
             cy.wait(5000)
             customerpage.AddCustomer()
             cy.wait(5000)
-
-
-            // custoemr create fields company info
-            // customerpage.customerType()
-            // const optionctype = 'Prepaid'
-            // cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
-            //     let elementFound = false
-            //     if ($ele.text().trim() === optionctype) {
-            //         elementFound = true
-            //         cy.wrap($ele).click()
-            //     }
-            // })
-
-            cy.wait(2000)
             
             customerpage.customerGroup(data.customerGroup)
             const optioncgroup = 'TEST'
@@ -59,57 +45,61 @@ describe('Customer Manage', () => {
             customerpage.nextPage()
             cy.wait(5000)
 
-            // Add products input fields (director Info)
+            // Add customer input fields (director Info)
             customerpage.directorName(data.directorName)
             customerpage.directorSurname(data.directorSurname)
             customerpage.directorEmail(data.emailId)
             customerpage.directorPassword(data.password)
 
-            // customerpage.countryCodeCustomer()
-            // customerpage.mobileNumberCustomer()
-            
-            //customerpage.nextPageDirector()
-
-
-            // Contacts details for customer
-            //customerpage.givenName(data.givenName)
-            
-
-            cy.get('div#phone label.country-selector__label').click()
+            customerpage.phoneCountryCodeDirector()
             cy.wait(1000)
-            cy.get('div#phone div.iti-flag-small.iti-flag.bd').click()
+            customerpage.phoneSelectCountryCodeDirector()
             cy.wait(2000)
 
-            customerpage.mobileNumberCustomer("01841785864")
+            customerpage.phoneNumberCustomer("01841785864")
             cy.wait(2000)
 
             customerpage.nextPageDirector()
             cy.wait(5000)
-            // customerpage.customerRole(data.role)
+
+            // Contacts details for customer
+            customerpage.givenName(data.givenName)
+            customerpage.customerRole(data.role)
+
+            customerpage.mobileCountryCodeDirector()
+            cy.wait(1000)
+            customerpage.mobileSelectCountryCodeDirector()
+            cy.wait(2000)
+
+            customerpage.mobileNumberContacts("01841785864")
+            cy.wait(2000)
+
+            customerpage.nextPageContacts()
+
 
             // Trading details for create trading
-            // customerpage.tradingName(data.tradingName)
-            // customerpage.addressLineOne(data.addressLineOne)
-            // customerpage.addressLineTwo(data.addressLineTwo)
-            // customerpage.emailTrading(data.emailTrading)
-            // customerpage.deliveryDate()
+            customerpage.tradingName(data.tradingName)
+            customerpage.addressLineOne(data.addressLineOne)
+            customerpage.addressLineTwo(data.addressLineTwo)
+            customerpage.suburbTrading(data.suburb)
+            customerpage.countryTrading(data.countryTrading)
+            customerpage.stateTrading(data.stateTrading)
+            customerpage.postcodeTrading(data.postcodeTrading)
+            customerpage.emailTrading(data.emailTrading)
+            customerpage.deliveryDate()
 
-            // customerpage.submitTrading()
+            customerpage.submitTrading()
+            cy.get(2000)
 
-
-
-           cy.get(3000)
-
-            // productpage.inputCountry(data.country)
-            // const optionOrigin = 'Albania'
-            // cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
-            //     let elementFound = false
-            //     if ($ele.text().trim() === optionOrigin) {
-            //         elementFound = true
-            //         cy.wrap($ele).click()
-            //     }
-            // })
-
+            // verification customer adding 
+            customerpage.customerList()
+            cy.wait(2000)
+            customerpage.searchCustoemr(data.abnNumber)
+            cy.wait(2000)
+            customerpage.actionButton()
+            customerpage.activeCustomer()
+            cy.wait(2000)
+            customerpage.confirmActivation()
             
 
         })

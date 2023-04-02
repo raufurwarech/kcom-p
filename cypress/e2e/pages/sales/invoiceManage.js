@@ -5,8 +5,8 @@ export class InvoiceManage {
     clickLogin_button = "button[type=submit]"
 
     sales_Menu = "[class='feather feather-shopping-cart']"
-    InvoiceList_Menu = "[href='/sale/invoice-list']"
-    sale_invoice_create = "[href='/sale/invoice-handle']"
+    invoiceList_Menu = "Invoice List"
+    sale_invoice_create = "//span[contains(text(),'New Sale Invoice')]"
 
     company_Name = "#autosuggest__input_ajax"
     delivary_Address = "#trading-delivery-address"
@@ -51,11 +51,11 @@ export class InvoiceManage {
     }
 
     invoiceListMenu() {
-        cy.get(this.InvoiceList_Menu).click()
+        cy.contains(this.invoiceList_Menu).click()
     }
 
-    sale() {
-        cy.get(this.sale_invoice_create).click()
+    newSaleInvoice() {
+        cy.xpath(this.sale_invoice_create).click()
 
     }
 

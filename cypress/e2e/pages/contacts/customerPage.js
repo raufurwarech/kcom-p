@@ -12,8 +12,6 @@ export class CustomerManage {
     company_type = "//div[@id='vs30__combobox']//input[@type='search']"
     customer_group = "#cus-group"
     abn_number = "#abn"
-    // company_name= "name"
-
     next_page_company = "//button[normalize-space()='Next']"
 
     //director details 
@@ -21,30 +19,40 @@ export class CustomerManage {
     sur_name = "#sur_name"
     email_id = "#email"
     password = "#password"
-    mobile_Country_Code_director = "[class='country-selector input-country-selector is-focused has-list-open']"
-    mobile_Number_director = "div#phone [placeholder='Phone number']"
+    phone_Country_Code_Director = "div#phone label.country-selector__label"
+    phone_Select_Country_Code_Director = "div#phone div.iti-flag-small.iti-flag.bd"
+    phone_Number_director = "div#phone [placeholder='Phone number']"
     next_page_director = "//button[contains(text(),'Next')]"
 
     // contacts details
     given_name = "[placeholder='Given Name']"
     role = "#role"
-    mobile_Country_code_contact = "[#class='country-selector__label']"
-    mobile_Number_Contract = "div#phone [placeholder='Phone number']"
-    next_page_contacts = "[//button[normalize-space()='Next']"
+    mobile_Country_Code_Director = "div#mobile label.country-selector__label"
+    mobile_Select_Country_Code_Director = "div#mobile div.iti-flag-small.iti-flag.bd"
+    
+    mobile_Number_Contract = "div#mobile [placeholder='Phone number']"
+    next_page_contacts = "Next" 
 
 
     // Trading details 
     trading_name = "#trading_name"
     addressLine_one = "#trading-address-line-1"
     addressLine_two = "#address_line2"
-    suburb = "#suburb"
-    country = "#country"
-    state = "#state"
-    postcode = "#postcode"
-    email = "#email"
-    delivery_date_one = "#__BVID__2367"
+    suburb = "div#TradingDetails6 input#suburb"
+    country = "div#TradingDetails6 input#country"
+    state = "div#TradingDetails6 input#state"
+    postcode = "div#TradingDetails6 input#postcode"
+    email = "div#TradingDetails6 input#email"
+    delivery_date_one = "Monday"
   
-    submit = "//button[normalize-space()='Submit']"
+    submit = "Submit"
+
+    // verification customer add
+    customer_List = "Customer List"
+    search_customer = "[placeholder='Search...']"
+    actions_button = "#dropdown-right__BV_toggle_"
+    activate_customer = "Activate"
+    confirm_active_custoemr = "[class='swal2-confirm btn btn-primary']"
 
     
 
@@ -62,7 +70,7 @@ export class CustomerManage {
         cy.get(this.clickLogin_button).click()
     }
 
-    // go to custoemr page
+    // go to customer page
     contactMenu(){
         cy.xpath(this.click_Contacts_Menu).click()
 
@@ -76,12 +84,6 @@ export class CustomerManage {
         cy.contains(this.click_AddCustomer_button).click()
         
     }
-
-    // Add customer input fields (Company Info)
-    // customerType(custype){
-    //     cy.get(this.company_type).type(custype)
-
-    // }
 
     customerGroup(cugroup){
         cy.get(this.customer_group).type(cugroup)
@@ -115,15 +117,18 @@ export class CustomerManage {
         cy.get(this.password).type(passw)
     }
 
-    // countryCodeCustomer(){
-    //     cy.get(this.mobile_Country_Code_director).click()
-    // }
-
-    mobileNumberCustomer(customermobile){
-        cy.get(this.mobile_Number_director).type(customermobile)
+    phoneCountryCodeDirector(){
+        cy.get(this.phone_Country_Code_Director).click()
     }
 
+    
+    phoneSelectCountryCodeDirector(){
+        cy.get(this.phone_Select_Country_Code_Director).click()
+    }
 
+    phoneNumberCustomer(customermobile){
+        cy.get(this.phone_Number_director).type(customermobile)
+    }
 
     nextPageDirector(){
         cy.xpath(this.next_page_director).click()
@@ -139,16 +144,20 @@ export class CustomerManage {
         cy.get(this.role).type(role)
     }
 
-    mobileCodeContact(){
-        cy.get(this.mobile_Country_code_contact).click()
+    mobileCountryCodeDirector (){
+        cy.get(this.mobile_Country_Code_Director).click()
     }
 
-    phoneNumber(phone){
-        cy.get(this.mobile_Number_Contract).type(phone)
+    mobileSelectCountryCodeDirector (){
+        cy.get(this.mobile_Select_Country_Code_Director).click()
     }
 
+    mobileNumberContacts(mobile){
+        cy.get(this.mobile_Number_Contract).type(mobile)
+    }
+    
     nextPageContacts(){
-        cy.xpath(this.next_page_contacts).click()
+        cy.contains(this.next_page_contacts).click()
     }
     
 
@@ -157,13 +166,15 @@ export class CustomerManage {
     tradingName(tradname){
         cy.get(this.trading_name).type(tradname)
     }
+
     addressLineOne(addressone){
         cy.get(this.addressLine_one).type(addressone)
     }
+
     addressLineTwo(addresstwo){
         cy.get(this.addressLine_two).type(addresstwo)
     }
-    
+        
     suburbTrading(suburb){
         cy.get(this.suburb).type(suburb)
     }
@@ -171,6 +182,7 @@ export class CustomerManage {
     countryTrading(countrytrad){
         cy.get(this.country).type(countrytrad)
     }
+
     stateTrading(statetrad){
         cy.get(this.state).type(statetrad)
     }
@@ -183,13 +195,32 @@ export class CustomerManage {
         cy.get(this.email).type(email)
     }
     
-    deliveryDate(statetrad){
-        cy.get(this.delivery_date_one).check(statetrad)
+    deliveryDate(){
+        cy.contains(this.delivery_date_one).click()
     }
 
-    submitTrading(submit){
-        cy.get(this.submit).click(submit)
+    submitTrading(){
+        cy.contains(this.submit).click()
     }
 
+    // verification customer adding
+    customerList(){
+        cy.contains(this.customer_List).click()
+    }
+
+    searchCustoemr(searchcustomer){
+        cy.get(this.search_customer).type(searchcustomer)
+    }
+   
+    actionButton(){
+        cy.get(this.actions_button).click()
+    }
+    activeCustomer(){
+        cy.get(this.activate_customer).click()
+    }
+
+   confirmActivation(){
+    cy.get(this.confirm_active_custoemr).click()
+   }
     
 }
