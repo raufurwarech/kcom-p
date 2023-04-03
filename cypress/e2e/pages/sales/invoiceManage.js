@@ -9,7 +9,8 @@ export class InvoiceManage {
     sale_invoice_create = "//span[contains(text(),'New Sale Invoice')]"
 
     company_Name = "#autosuggest__input_ajax"
-    delivary_Address = "#trading-delivery-address"
+    // delivary_Address = "#trading-delivery-address"
+    
 
 
 
@@ -61,6 +62,10 @@ export class InvoiceManage {
 
     companyName(companyname){
         cy.get(this.company_Name).type(companyname)
+    }
+
+    delivaryAddress(){
+        cy.get(this.delivary_Address).click()
     }
 
 }
