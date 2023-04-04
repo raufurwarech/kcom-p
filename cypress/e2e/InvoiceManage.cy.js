@@ -6,7 +6,7 @@ describe('invoice Manage', () => {
     const invoicepage = new InvoiceManage()
 
     it('Create Invoice', () => {
-        cy.fixture('product.json').then((data) => {
+        cy.fixture('sales.json').then((data) => {
 
             // Login application
             cy.viewport('macbook-16')
@@ -35,20 +35,35 @@ describe('invoice Manage', () => {
 
             cy.contains('Pickup').click()
 
-            invoicepage.selectCategory(data.category)
+            invoicepage.selectCategory(data.select_category)
             cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
-                if ($ele.text().trim() === data.category) {
+                if ($ele.text().trim() === data.select_category) {
                     cy.wrap($ele).click()
                 }
             })
 
-            invoicepage.selectProduct("500G x 12")
+            invoicepage.selectProduct(data.select_product)
             cy.wait(2000)
             cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
-                if ($ele.text().trim() === "500G x 12") {
+                if ($ele.text().trim() === data.select_product) {
                     cy.wrap($ele).click()
                 }
             })
+
+            invoicepage.selectSize(data.select_size)
+            cy.wait(2000)
+            cy.get('li.vs__dropdown-option').each(($ele, index, $list) => {
+                if ($ele.text().trim() === data.select_size) {
+                    cy.wrap($ele).click()
+                }
+            })
+
+            invoicepage.selectQuantity(data.item_quantity)
+            invoicepage.addNewInvoice()
+            invoicepage.addNote(data.note)
+            cy.wait(2000)
+            invoicepage.saveInvoice()
+
 
 
         })

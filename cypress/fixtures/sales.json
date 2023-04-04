@@ -1,0 +1,9 @@
+{
+    "enterEmail": "test@ecom.com",
+    "enterPassword": "password",
+    "select_category" : "WATER",
+    "select_product": "KINLY-KINLY-5 PC-WATER 100",
+    "select_size": "5 PC x 10",
+    "item_quantity": "10",
+    "note": "invoice created sucessfully"
+}

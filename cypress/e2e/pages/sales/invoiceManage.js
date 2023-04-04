@@ -13,26 +13,18 @@ export class InvoiceManage {
 
 
 
-    item_category = "#sale-invoice-category"
-    item_list_dropdown = "li.vs__dropdown-option"
-
-    sale_product = "#sale-invoice-product"
-    product_dropdown = "li.vs__dropdown-option"
-
-    iteam_size = "#sale-invoice-product-item-size"
-    size_dropdown = "li.vs__dropdown-option--highlight"
-
+    select_category = "#sale-invoice-category"
+    select_product = "#sale-invoice-product"
+    select_size = "#sale-invoice-product-item-size"  
     item_quantity = "#quantity"
 
-
-
-    create_invoice_checkbox = "#override-status-confirmation"
-    submit_invoice = "//button[@class='btn mr-1 btn-primary']"
+    add_new_invoice = "Add"
+    add_note = "[placeholder='Notes']"
+    save_invoice = "Submit"
 
     // Login Application
     enterEmail(userid) {
         cy.get(this.enterEmail_textbox).should('be.visible').type(userid)
-
     }
 
     enterPassword(password) {
@@ -44,7 +36,7 @@ export class InvoiceManage {
         cy.get(this.clickLogin_button).click()
     }
 
-    // go to sales quatation page
+    // go to sales Invoice page
     salesMenu() {
         cy.get(this.sales_Menu).click()
 
@@ -62,5 +54,29 @@ export class InvoiceManage {
     companyName(companyname){
         cy.get(this.company_Name).type(companyname)
     }
+    selectCategory(itemCate){
+        cy.get(this.select_category).type(itemCate)
+    }
+    selectProduct(saleproduct){
+        cy.get(this.select_product).type(saleproduct)
+    }
+    selectSize(size){
+        cy.get(this.select_size).type(size)
+    }
+    selectQuantity(quantity){
+        cy.get(this.item_quantity).type(quantity)
+    }
+    addNewInvoice(){
+        cy.contains(this.add_new_invoice).click()
+    }
+
+    addNote(note){
+        cy.get(this.add_note).type(note)
+    }
+    saveInvoice(){
+        cy.contains(this.save_invoice).click()
+    }
+
+
 
 }
