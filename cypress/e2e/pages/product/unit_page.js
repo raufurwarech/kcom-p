@@ -8,7 +8,7 @@ export class UnitPage {
     click_Unit_menu = "Units"
     click_AddUnit_button = "//body[1]/div[2]/div[1]/div[3]/div[3]/div[2]/div[1]/div[4]/div[1]/div[1]/div[2]/div[2]/div[1]/button[1]/span[1]"
     input_Unit_Name = "#autosuggest__input"
-    submit_unit_name = "//body[1]/div[2]/div[1]/div[3]/div[3]/div[2]/div[1]/div[1]/div[2]/div[1]/span[1]/form[1]/div[2]/button[1]"
+    submit_unit_name = "[class='btn mr-2 btn-primary']"
 
     enterEmail(userid) {
         cy.get(this.enterEmail_textbox).should('be.visible').type(userid)
@@ -46,7 +46,7 @@ export class UnitPage {
     }
 
     submitUnitname(){
-        cy.xpath(this.submit_unit_name).click()
+        cy.get(this.submit_unit_name).click()
 
     }
 

@@ -1,8 +1,10 @@
 import { PurchageOrder } from "./pages/purchase/purchase_order";
+import { PurchaseReturn } from "./pages/purchase/purchase_return";
 
 describe('Create pruchase', () => {
 
     const purchaseorder = new PurchageOrder()
+    const purchasereturn = new PurchaseReturn()
 
     it('Purchase Management', () => {
 
@@ -100,7 +102,54 @@ describe('Create pruchase', () => {
             purchaseorder.purchaseNote("demo data inserted")
             purchaseorder.purchaseRecive()
 
+            
 
+            // create Purchase return (return Page)
+            purchasereturn.PurchaseReturnMenu()
+            cy.wait(5000)
+           
+
+            // Input purchase details 
+            
+            purchasereturn.searchSupplier('Denim')
+            const optionsupreturn = 'DENIM'
+            cy.get('li.autosuggest__results-item').each(($ele, index, $list) => {
+                let elementFound = false
+                if ($ele.text().trim() === optionsupreturn) {
+                    elementFound = true
+                    cy.wrap($ele).click()
+                }
+            })
+            cy.wait(3000)
+
+            //cy.xpath("//div[contains(text(),'Add')]").click()
+
+            purchasereturn.searchPruchaseOrder('PO-2303260003')
+            const optionPorder = 'PO-2303260003'
+            cy.get('li.autosuggest__results-item').each(($ele, index, $list) => {
+                let elementFound = false
+                if ($ele.text().trim() === optionPorder) {
+                    elementFound = true
+                    cy.wrap($ele).click()
+                }
+            })
+            cy.wait(3000)
+
+            purchasereturn.returnQuantity('10')
+            purchasereturn.checkReturn()
+            
+            purchasereturn.returnReason("Product Damage")
+            const optionReason = 'PRODUCT DAMAGE'
+            cy.get('li.vs__dropdown-option--highlight').each(($ele, index, $list) => {
+                let elementFound = false
+                if ($ele.text().trim() === optionReason) {
+                    elementFound = true
+                    cy.wrap($ele).click()
+                }
+            })         
+
+            purchasereturn.returnNote("demo data inserted")
+            purchasereturn.createReturn()
 
         })
 

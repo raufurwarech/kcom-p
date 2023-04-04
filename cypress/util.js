@@ -1,5 +1,5 @@
 
-export function createproduct(src, length) {
+export function createitems(src, length) {
     let result = ''
     length = isNaN(length)?10:length
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';

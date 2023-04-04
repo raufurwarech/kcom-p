@@ -7,10 +7,16 @@
   "barCode": "4325434223",
   "category": "FROZEN",
   "brand": "COFFEE",
-  "unit":"1 KG",
+  "unit": "1 KG",
   "supplier": "BD COM",
   "country": "Albania",
   "producttax" : "8% (EIGHT)",
-  "productQuantity": "20"
+  "productQuantity": "20",
+
+
+  "new_brand": "Alaba",
+  "new_category": "NewCa",
+  "new_unit": "10L"
+
 
 }

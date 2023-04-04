@@ -8,7 +8,7 @@ export class CategoryPage {
     click_category_menu = "Categories"
     click_AddCategory_button = "//body[1]/div[2]/div[1]/div[3]/div[3]/div[2]/div[1]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/button[1]"
     input_Category_Name = "#category-name"
-    submit_Category_name = "//div[contains(text(),'Add')]"
+    submit_Category_name = "[class='btn mr-2 btn-primary']"
 
     // Login application
     enterEmail(userid) {
@@ -48,7 +48,7 @@ export class CategoryPage {
     }
 
     submitCategoryname(){
-        cy.xpath(this.submit_Category_name).click()
+        cy.get(this.submit_Category_name).click()
 
     }
 

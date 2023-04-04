@@ -9,23 +9,27 @@ export class DiscountPage {
     click_AddDiscount_Button = "[class='text-nowrap']"
 
     // discount options
-    discount_type = "//button[contains(text(),'Product Discount')]"
-    // amount_Discount = "//button[contains(text(),'Amount of Order')]"
-    // bogo_discount = "//button[contains(text(),'Buy X get Y')]"
+    discount_type_PD = "//button[contains(text(),'Product Discount')]"
 
-    // create discount 
-    discount_name = "#title"
-    // discount_value_type = ""
-    discount_Value = "//input[@id='value']"
-    applies_Category = "//label[contains(text(),'Specific Category')]"
-    specific_Category= "#category-id"
     
-    minimum_Purchases_Requirements = "//label[normalize-space()='No minimum requirements']"
-    combinations_Discount = "//label[normalize-space()='Shipping discounts']"
-    customer_Eligibility = "//label[contains(text(),'All customer')]"
-    maximum_Discount_Usages = "//label[contains(text(),'Limit to one use per customer')]"
-    // active_Dates = ""
-    submit_Discount = "//button[normalize-space()='Save']"
+    // create discount 
+    discount_name = "[placeholder='Title']"
+    discount_Value = "#value"
+    specific_Category = "Specific Category"
+    select_category = "#category-id"
+    
+    minimum_Purchases_Requirements = "No minimum requirements"
+    combinations_Discount = "Shipping discounts"
+    customer_Eligibility = "All customer"
+    maximum_Discount_Usages = "Limit to one use per customer"
+    submit_Discount = "Save"
+
+    
+    // create new discount (Amount of order discount)
+    discount_type_AO = "//button[normalize-space()='Amount of Order']"
+
+    // create new discount (BOGO offer discount)
+    discount_type_BOGO = "//button[normalize-space()='Buy X get Y']"
 
 
     enterEmail(userid) {
@@ -58,51 +62,57 @@ export class DiscountPage {
 
     }
 
-    // create new discount 
-    discountTitle() {
-        cy.xpath(this.discount_type).click()
+    // create new discount (product discount)
+    discountType() {
+        cy.xpath(this.discount_type_PD).click()
     }
-
-    discountName(disname) {
+    
+    discountTitle(disname) {
         cy.get(this.discount_name).type(disname)
     }
 
     discountValue(disvalue) {
-        cy.xpath(this.discount_Value).type(disvalue)
+        cy.get(this.discount_Value).type(disvalue)
     }
     
-    appliesCategory(){
-        cy.xpath(this.applies_Category).click()
-    }
-    
-    specificCategory(specategoty){
-        cy.get(this.specific_Category).type(specategoty)
+    specificCategory(){
+        cy.contains(this.specific_Category).click()
     }
 
+    selectCategory(selectcate){
+        cy.get(this.select_category).type(selectcate)
+    }
+
+
+
     minimumPurchasesRequirements (){
-        cy.xpath(this.minimum_Purchases_Requirements).click()
+        cy.contains(this.minimum_Purchases_Requirements).click()
 
     }
     combinationsDiscount(){
-        cy.xpath(this.combinations_Discount).click()
+        cy.contains(this.combinations_Discount).click()
 
     }
 
     customerEligibility(){
-        cy.xpath(this.customer_Eligibility).click()
+        cy.contains(this.customer_Eligibility).click()
 
     }
     maximumDiscountUsages(){
-        cy.xpath(this.maximum_Discount_Usages).click()
+        cy.contains(this.maximum_Discount_Usages).click()
 
     }
     submitDiscount(){
-        cy.xpath(this.submit_Discount).click()
+        cy.contains(this.submit_Discount).click()
 
     }
 
 
+    // create new discount (Amount of order discount)
 
+
+
+    // create new discount (BOGO offer discount)
 
 
 }

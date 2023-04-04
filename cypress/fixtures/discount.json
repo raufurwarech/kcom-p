@@ -1,9 +1,12 @@
 {
         "enterEmail": "test@ecom.com",
         "enterPassword": "password",
-        "disname" : "Flat 10",
-        "disvalue": "10",
-        "disspecategoty": "TIN"
+        "discount_Name_PD" : "DisPD",
+        "discount_Name_AO" : "DisAO",
+        "discount_Name_BOGO" : "DisBOGO",
+        "discount_Value": "10",
+        "select_categoty": "TIN"
+        
 
       
 }

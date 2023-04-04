@@ -10,7 +10,7 @@ export class PurchaseReturn {
     search_Purchase_Order = "[placeholder='Search by Purchase Order No']"
 
     return_quantity = "#input-formatter0"
-    check_return = "input[type='checkbox']"
+    check_return = "div.custom-checkbox input.custom-control-input"
     return_reason = "[placeholder='SELECT Reason']"
     return_note = "[placeholder='Notes']"
 
@@ -52,9 +52,9 @@ export class PurchaseReturn {
         cy.get(this.return_quantity).type(returnquan)
     }
 
-    // checkReturn(){
-    //     cy.get(this.check_return).check()
-    // }
+    checkReturn(){
+        cy.get(this.check_return).check()
+    }
 
     returnReason(reason){
         cy.get(this.return_reason).type(reason)

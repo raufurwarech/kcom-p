@@ -1,5 +1,5 @@
 import { Productpage } from "./pages/product/product_page";
-import { createproduct } from "../util";
+import { createitems } from "../util";
 import { PurchageOrder } from "./pages/purchase/purchase_order";
 
 describe('Create Products', () => {
@@ -11,9 +11,9 @@ describe('Create Products', () => {
 
         cy.fixture('product.json').then((data) => {
 
-            data.skuNumber = createproduct(data.skuNumber)
-            data.productName = createproduct(data.productName)
-            data.barCode = createproduct(data.barCode)
+            data.skuNumber = createitems(data.skuNumber)
+            data.productName = createitems(data.productName)
+            data.barCode = createitems(data.barCode)
 
             // Login application
             cy.viewport('macbook-16')
